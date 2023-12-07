@@ -18,19 +18,26 @@ document.querySelector('.find-people').addEventListener('click', () => {
 
 function deterministicDayShuffle(name) {
     const date = new Date();
-    const uniqueDayCode = date.getFullYear() * 10000 + (date.getMonth() + 1) * 100 + date.getDate();
-    const people = ['nico', 'josh', 'amanda', 'philippe', 'elaine', 'bruce'];
+	const uniqueDayCode = (date.getFullYear() * 10000 + (date.getMonth() + 1) * 100 + date.getDate()) * (date.getMonth() + 1 + date.getDate());
+	let people = ['nico', 'josh', 'amanda', 'philippe', 'elaine', 'bruce'];
+	if (!people.includes(name)) return null;
 
-    if (!people.includes(name)) return null;
+	const shuffled = [];
+	while (people.length > 0){
+		const index = (uniqueDayCode + people.length * 13) % people.length;
+		shuffled.push(people[index]);
+		people = people.filter((v,i) => i !== index);
+	}
 
-    // Simple shuffle based on the uniqueDayCode
-    for (let i = 0; i < uniqueDayCode % 100; i++) {
-        people.sort(() => Math.random() - 0.5);
-    }
-
-    const index = people.indexOf(name);
-    return [people[(index + 1) % people.length], people[(index + 2) % people.length]];
+    const shift = (uniqueDayCode ) % shuffled.length;
+    const shiftedPeople = [...shuffled.slice(shift), ...shuffled.slice(0, shift)];
+    const index = shiftedPeople.indexOf(name);
+    const person1 = shiftedPeople[(index + 1) % (shuffled.length)];
+    const person2 = shiftedPeople[(index + 2) % (shuffled.length)];
+ 
+    return [person1, person2];
 }
+
 
 
 
