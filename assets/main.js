@@ -23,7 +23,7 @@ document.querySelector('.find-people').addEventListener('click', () => {
 
 	// const fullSetOfPresents = fullSet();
 	// console.log("fullSet",fullSetOfPresents)
-	
+
     if (matches) {
         alert(`Your people to gift are: ${matches[0]} and ${matches[1]}`);
     } else {
@@ -32,8 +32,8 @@ document.querySelector('.find-people').addEventListener('click', () => {
 });
 
 function deterministicDayShuffle(name) {
-    const date = new Date();
-	// const date = new Date('1990-10-01');
+    // const date = new Date();
+	const date = new Date('1990-10-02');
 	const uniqueDayCode = (date.getFullYear() * 10000 + (date.getMonth() + 1) * 100 + date.getDate()) * (date.getMonth() + 1 + date.getDate());
 	let people = ['nico', 'josh', 'amanda', 'philippe', 'elaine', 'bruce'];
 	if (!people.includes(name)) return null;
@@ -54,33 +54,3 @@ function deterministicDayShuffle(name) {
     return [person1, person2];
 }
 
-
-
-
-
-(function($) {
-
-	var	$window = $(window),
-		$body = $('body');
-
-	// Breakpoints.
-		breakpoints({
-			xlarge:   [ '1141px',  '1680px' ],
-			large:    [ '981px',   '1140px' ],
-			medium:   [ '737px',   '980px'  ],
-			small:    [ '481px',   '736px'  ],
-			xsmall:   [ '321px',   '480px'  ],
-			xxsmall:  [ null,      '320px'  ]
-		});
-
-	// Play initial animations on page load.
-		$window.on('load', function() {
-			window.setTimeout(function() {
-				$body.removeClass('is-preload');
-			}, 100);
-		});
-
-	// Scrolly.
-		$('.scrolly').scrolly();
-
-})(jQuery);
