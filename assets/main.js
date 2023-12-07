@@ -23,8 +23,7 @@ document.querySelector('.find-people').addEventListener('click', () => {
 
 	// const fullSetOfPresents = fullSet();
 	// console.log("fullSet",fullSetOfPresents)
-
-
+	
     if (matches) {
         alert(`Your people to gift are: ${matches[0]} and ${matches[1]}`);
     } else {
