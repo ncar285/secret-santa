@@ -32,10 +32,9 @@ document.querySelector('.find-people').addEventListener('click', () => {
 });
 
 function deterministicDayShuffle(name) {
-    // const date = new Date();
-	const date = new Date('1995-15-01');
+    date = new Date('2001-01-15')
 	const uniqueDayCode = (date.getFullYear() * 10000 + (date.getMonth() + 1) * 100 + date.getDate()) * (date.getMonth() + 1 + date.getDate());
-	let people = ['nico', 'josh', 'amanda', 'philippe', 'elaine', 'bruce'];
+	let people = ['nico', 'josh', 'amanda', 'philippe', 'elaine', 'bruce', 'xavier'];
 	if (!people.includes(name)) return null;
 
 	const shuffled = [];
