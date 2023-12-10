@@ -1,7 +1,7 @@
 function fullSet(){
 
 	const presents = {}
-	const people = ['nico', 'josh', 'amanda', 'philippe', 'elaine', 'bruce'];
+	const people = ['nico', 'josh', 'amanda', 'philippe', 'elaine', 'bruce', 'xavier'];
 	people.forEach((name) => {
 		presents[name] = deterministicDayShuffle(name);
 	})
@@ -33,7 +33,7 @@ document.querySelector('.find-people').addEventListener('click', () => {
 
 function deterministicDayShuffle(name) {
     // const date = new Date();
-	const date = new Date('1990-10-02');
+	const date = new Date('1995-15-01');
 	const uniqueDayCode = (date.getFullYear() * 10000 + (date.getMonth() + 1) * 100 + date.getDate()) * (date.getMonth() + 1 + date.getDate());
 	let people = ['nico', 'josh', 'amanda', 'philippe', 'elaine', 'bruce'];
 	if (!people.includes(name)) return null;
