@@ -19,13 +19,13 @@ document.querySelector('.find-people').addEventListener('click', () => {
     }
 
     const name = inputName.toLowerCase();
-    const matches = deterministicDayShuffle(name);
+    const [matches, coGifters] = deterministicDayShuffle(name);
 
-	// const fullSetOfPresents = fullSet();
-	// console.log("fullSet",fullSetOfPresents)
 
     if (matches) {
-        alert(`Your people to gift are: ${matches[0]} and ${matches[1]}`);
+        alert(`Your people to gift are: ${matches[0]} and ${matches[1]}\n
+        don't but the same gift as ${coGifters[0]} for ${matches[0]}\n
+        don't but the same gift as ${coGifters[1]} for ${matches[1]}\n`);
     } else {
         alert('Name not found in the participants list.');
     }
@@ -49,7 +49,16 @@ function deterministicDayShuffle(name) {
     const index = shiftedPeople.indexOf(name);
     const person1 = shiftedPeople[(index + 1) % (shuffled.length)];
     const person2 = shiftedPeople[(index + 2) % (shuffled.length)];
+
+
+    const coGifter1Index = (shiftedPeople.indexOf(person1) - 2 + shuffled.length) % shuffled.length;
+    const coGifter2Index = (shiftedPeople.indexOf(person1) - 1 + shuffled.length) % shuffled.length;
+    const coGifter1 = shiftedPeople[coGifter1Index];
+    const coGifter2 = shiftedPeople[coGifter2Index];
+
+    const matches = [person1, person2];
+    const coGifters = [coGifter1, coGifter2];
  
-    return [person1, person2];
+    return [matches, coGifters];
 }
 
